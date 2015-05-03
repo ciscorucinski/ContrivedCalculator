@@ -5,10 +5,7 @@ package com.facebook.rucinskic.contrivedcalculator;
  */
 public class Operation {
 
-    private IOperationStrategy operator;
-
-    public Operation(IOperationStrategy operator) { this.operator = operator; }
-
-    public double execute(double a, double b) { return this.operator.executeOperation(a, b); }
+    // todo finish this class
+    public double execute(double a, double b) { return 0; }
 
 }

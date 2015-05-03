@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -14,12 +13,6 @@ public class Calculator extends AppCompatActivity {
     // Button and EditText declaration
     Button btnAdd, btnSub, btnMul, btnDiv;
     EditText txtNumber1, txtNumber2, txtResult;
-
-    // OnClickListener declaration
-    View.OnClickListener addListener, subListener, mulListener, divListener;
-
-    // Variables for math operations
-    double total, num1, num2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,75 +31,11 @@ public class Calculator extends AppCompatActivity {
         txtNumber2 = (EditText) findViewById(R.id.txtNumber2);
         txtResult = (EditText) findViewById(R.id.txtResult);
 
-        // Add Listeners
-        addListener = new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                num1 = Double.parseDouble(txtNumber1.getText().toString());
-                num2 = Double.parseDouble(txtNumber2.getText().toString());
-
-                total = new Operation(new Add()).execute(num1, num2);
-
-                txtResult.setText(Double.toString(total));
-
-            }
-        };
-
-        // Subtract Listener
-        subListener = new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                num1 = Double.parseDouble(txtNumber1.getText().toString());
-                num2 = Double.parseDouble(txtNumber2.getText().toString());
-
-                total = new Operation(new Subtract()).execute(num1, num2);
-
-                txtResult.setText(Double.toString(total));
-
-            }
-        };
-
-        // Multiply Listener
-        mulListener = new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                num1 = Double.parseDouble(txtNumber1.getText().toString());
-                num2 = Double.parseDouble(txtNumber2.getText().toString());
-
-                total = new Operation(new Multiply()).execute(num1, num2);
-
-                txtResult.setText(Double.toString(total));
-
-            }
-        };
-
-        // Divide Listener
-        divListener = new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-                num1 = Double.parseDouble(txtNumber1.getText().toString());
-                num2 = Double.parseDouble(txtNumber2.getText().toString());
-
-                total = num1 / num2; // new Operation(new Divide()).execute(num1, num2);
-
-                txtResult.setText(Double.toString(total));
-
-            }
-        };
-
         // Add ClickListeners to buttons
-        btnAdd.setOnClickListener(addListener);
-        btnSub.setOnClickListener(subListener);
-        btnMul.setOnClickListener(mulListener);
-        btnDiv.setOnClickListener(divListener);
+        btnAdd.setOnClickListener(new OperationListener(this, "Add"));
+        btnSub.setOnClickListener(new OperationListener(this, "Subtract"));
+        btnMul.setOnClickListener(new OperationListener(this, "Multiply"));
+        btnDiv.setOnClickListener(new OperationListener(this, "Divide"));
 
     }
 
