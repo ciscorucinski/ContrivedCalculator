@@ -9,16 +9,16 @@ public class OperationListener implements View.OnClickListener {
 
     double num1, num2, total;
 
-    public OperationListener(Calculator UI, String operator) {
+    public OperationListener(Calculator UI, BinaryOperation operator) {
 
         this.UI = UI;
 
         switch (operator) {
 
-            case "Add":         operation = new Operation(new Add()); break;
-            case "Subtract":    operation = new Operation(new Subtract()); break;
-            case "Multiply":    operation = new Operation(new Multiply()); break;
-            case "Divide":      operation = new Operation(new Divide()); break;
+            case Add:         operation = new Operation(new Add()); break;
+            case Subtract:    operation = new Operation(new Subtract()); break;
+            case Multiply:    operation = new Operation(new Multiply()); break;
+            case Divide:      operation = new Operation(new Divide()); break;
 
         }
 

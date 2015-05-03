@@ -7,6 +7,11 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
+import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Add;
+import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Divide;
+import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Multiply;
+import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Subtract;
+
 public class Calculator extends AppCompatActivity {
 
     // EditText declarations
@@ -30,10 +35,10 @@ public class Calculator extends AppCompatActivity {
         txtResult = (EditText) findViewById(R.id.txtResult);
 
         // Add ClickListeners to buttons
-        btnAdd.setOnClickListener(new OperationListener(this, "Add"));
-        btnSub.setOnClickListener(new OperationListener(this, "Subtract"));
-        btnMul.setOnClickListener(new OperationListener(this, "Multiply"));
-        btnDiv.setOnClickListener(new OperationListener(this, "Divide"));
+        btnAdd.setOnClickListener(new OperationListener(this, Add));
+        btnSub.setOnClickListener(new OperationListener(this, Subtract));
+        btnMul.setOnClickListener(new OperationListener(this, Multiply));
+        btnDiv.setOnClickListener(new OperationListener(this, Divide));
 
     }
 
