@@ -47,7 +47,7 @@ public class Calculator extends AppCompatActivity {
                 num1 = Double.parseDouble(txtNumber1.getText().toString());
                 num2 = Double.parseDouble(txtNumber2.getText().toString());
 
-                total = num1 + num2;
+                total = new Operation(new Add()).execute(num1, num2);
 
                 txtResult.setText(Double.toString(total));
 
@@ -63,7 +63,7 @@ public class Calculator extends AppCompatActivity {
                 num1 = Double.parseDouble(txtNumber1.getText().toString());
                 num2 = Double.parseDouble(txtNumber2.getText().toString());
 
-                total = num1 - num2;
+                total = new Operation(new Subtract()).execute(num1, num2);
 
                 txtResult.setText(Double.toString(total));
 
@@ -79,7 +79,7 @@ public class Calculator extends AppCompatActivity {
                 num1 = Double.parseDouble(txtNumber1.getText().toString());
                 num2 = Double.parseDouble(txtNumber2.getText().toString());
 
-                total = num1 * num2;
+                total = new Operation(new Multiply()).execute(num1, num2);
 
                 txtResult.setText(Double.toString(total));
 
@@ -95,7 +95,7 @@ public class Calculator extends AppCompatActivity {
                 num1 = Double.parseDouble(txtNumber1.getText().toString());
                 num2 = Double.parseDouble(txtNumber2.getText().toString());
 
-                total = num1 / num2;
+                total = num1 / num2; // new Operation(new Divide()).execute(num1, num2);
 
                 txtResult.setText(Double.toString(total));
 
