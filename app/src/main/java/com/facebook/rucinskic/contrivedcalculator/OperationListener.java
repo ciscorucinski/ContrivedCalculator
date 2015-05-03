@@ -15,10 +15,10 @@ public class OperationListener implements View.OnClickListener {
 
         switch (operator) {
 
-            case Add:         operation = new Operation(new Add()); break;
-            case Subtract:    operation = new Operation(new Subtract()); break;
-            case Multiply:    operation = new Operation(new Multiply()); break;
-            case Divide:      operation = new Operation(new Divide()); break;
+            case Add:         operation = operator.getOperation(); break;
+            case Subtract:    operation = operator.getOperation(); break;
+            case Multiply:    operation = operator.getOperation(); break;
+            case Divide:      operation = operator.getOperation(); break;
 
         }
 
