@@ -12,15 +12,7 @@ public class OperationListener implements View.OnClickListener {
     public OperationListener(Calculator UI, BinaryOperation operator) {
 
         this.UI = UI;
-
-        switch (operator) {
-
-            case Add:         operation = operator.getOperation(); break;
-            case Subtract:    operation = operator.getOperation(); break;
-            case Multiply:    operation = operator.getOperation(); break;
-            case Divide:      operation = operator.getOperation(); break;
-
-        }
+        this.operation = operator.getOperation();
 
     }
 
