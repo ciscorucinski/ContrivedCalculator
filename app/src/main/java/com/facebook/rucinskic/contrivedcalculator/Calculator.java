@@ -7,11 +7,9 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
-
 public class Calculator extends AppCompatActivity {
 
-    // Button and EditText declaration
-    Button btnAdd, btnSub, btnMul, btnDiv;
+    // EditText declarations
     EditText txtNumber1, txtNumber2, txtResult;
 
     @Override
@@ -21,10 +19,10 @@ public class Calculator extends AppCompatActivity {
         setContentView(R.layout.activity_calculator);
 
         // Extract the buttons from XML
-        btnAdd = (Button) findViewById(R.id.btnAddition);
-        btnSub = (Button) findViewById(R.id.btnSubtract);
-        btnMul = (Button) findViewById(R.id.btnMultiple);
-        btnDiv = (Button) findViewById(R.id.btnDivide);
+        Button btnAdd = (Button) findViewById(R.id.btnAddition);
+        Button btnSub = (Button) findViewById(R.id.btnSubtract);
+        Button btnMul = (Button) findViewById(R.id.btnMultiple);
+        Button btnDiv = (Button) findViewById(R.id.btnDivide);
 
         // Extract the EditText from the XML
         txtNumber1 = (EditText) findViewById(R.id.txtNumber1);
