@@ -35,10 +35,10 @@ public class Calculator extends AppCompatActivity {
         txtResult = (EditText) findViewById(R.id.txtResult);
 
         // Add ClickListeners to buttons
-        btnAdd.setOnClickListener(new OperationListener(this, Add));
-        btnSub.setOnClickListener(new OperationListener(this, Subtract));
-        btnMul.setOnClickListener(new OperationListener(this, Multiply));
-        btnDiv.setOnClickListener(new OperationListener(this, Divide));
+        btnAdd.setOnClickListener(new OperationClick(Add).listenerOn(this));
+        btnSub.setOnClickListener(new OperationClick(Subtract).listenerOn(this));
+        btnMul.setOnClickListener(new OperationClick(Multiply).listenerOn(this));
+        btnDiv.setOnClickListener(new OperationClick(Divide).listenerOn(this));
 
     }
 
