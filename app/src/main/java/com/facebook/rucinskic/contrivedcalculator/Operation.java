@@ -2,10 +2,10 @@ package com.facebook.rucinskic.contrivedcalculator;
 
 public class Operation {
 
-    IOperationStrategy operation;
+    private IOperationStrategy operation;   // Private. Disallows calling operations directly
 
-    Operation(IOperationStrategy operation) { this.operation = operation; }
+    Operation(final IOperationStrategy operation) { this.operation = operation; }
 
-    public double execute(double a, double b) { return operation.executeOperation(a, b); }
+    public double execute(final double a, final double b) { return operation.executeOperation(a, b); }
 
 }

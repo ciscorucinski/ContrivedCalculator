@@ -10,7 +10,7 @@ public enum BinaryOperation {
     private final Operation operation;
     private final String symbol;
 
-    BinaryOperation(String symbol, Operation operation) {
+    BinaryOperation(final String symbol, final Operation operation) {
 
         this.operation = operation;
         this.symbol = symbol;

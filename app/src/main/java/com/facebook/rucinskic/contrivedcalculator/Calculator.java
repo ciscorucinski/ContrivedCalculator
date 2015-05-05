@@ -15,7 +15,7 @@ import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Subtrac
 public class Calculator extends AppCompatActivity {
 
     // EditText declarations
-    EditText txtNumber1, txtNumber2, txtResult;
+    protected EditText txtNumber1, txtNumber2, txtResult;   // Protected now; private later. No mechanisms to allow other classes access to this right now
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class Calculator extends AppCompatActivity {
         txtResult = (EditText) findViewById(R.id.txtResult);
 
         // Add ClickListeners to buttons
-        btnAdd.setOnClickListener(new OperationClick(Add).listenerOn(this));
+        btnAdd.setOnClickListener(new OperationClick(Add).listenerOn(this));    // One reference to OperationClick?
         btnSub.setOnClickListener(new OperationClick(Subtract).listenerOn(this));
         btnMul.setOnClickListener(new OperationClick(Multiply).listenerOn(this));
         btnDiv.setOnClickListener(new OperationClick(Divide).listenerOn(this));
