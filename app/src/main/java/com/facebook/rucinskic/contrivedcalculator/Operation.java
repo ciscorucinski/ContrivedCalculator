@@ -6,6 +6,6 @@ public class Operation {
 
     Operation(final IOperationStrategy operation) { this.operation = operation; }
 
-    public double execute(final double a, final double b) { return operation.executeOperation(a, b); }
+    public double execute(final double a, final double b) { return operation.execute(a, b); }
 
 }

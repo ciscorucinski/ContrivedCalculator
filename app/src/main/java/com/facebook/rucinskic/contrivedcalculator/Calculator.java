@@ -12,10 +12,10 @@ import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Divide;
 import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Multiply;
 import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Subtract;
 
-public class Calculator extends AppCompatActivity {
+public class Calculator extends AppCompatActivity implements ICalculatorInteraction {
 
     // EditText declarations
-    protected EditText txtNumber1, txtNumber2, txtResult;   // Protected now; private later. No mechanisms to allow other classes access to this right now
+    private EditText txtNumber1, txtNumber2, txtResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,5 +67,28 @@ public class Calculator extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
 
+    }
+
+    @Override
+    public String getFirstNumber() { return valueOf(this.txtNumber1); }
+
+    @Override
+    public String getSecondNumber() { return valueOf(this.txtNumber2); }
+
+    @Override
+    public void updateResult(String result) { this.txtResult.setText(result); }
+
+    private String valueOf(EditText textbox) {
+
+        String text = textbox.getText().toString();
+
+        if (text.isEmpty()) {
+
+            textbox.setText("0");
+            return "0";
+
+        }
+
+        return text;
     }
 }
