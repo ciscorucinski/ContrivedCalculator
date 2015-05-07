@@ -2,22 +2,37 @@ package com.facebook.rucinskic.contrivedcalculator;
 
 public enum BinaryOperation {
 
-    Add         ("+", new Operation(new Add())),
-    Subtract    ("-", new Operation(new Subtract())),
-    Multiply    ("×", new Operation(new Multiply())),
-    Divide      ("÷", new Operation(new Divide()));
+    Add      ("+") { @Override double execute(final double a, final double b) { return a + b; } },
+    Subtract ("-") { @Override double execute(final double a, final double b) { return a - b; } },
+    Multiply ("×") { @Override double execute(final double a, final double b) { return a * b; } },
+    Divide   ("÷") { @Override double execute(final double a, final double b) { return a / b; } };
 
-    private final Operation operation;
     private final String symbol;
 
-    BinaryOperation(final String symbol, final Operation operation) {
+    abstract double execute(double a, double b);
 
-        this.operation = operation;
-        this.symbol = symbol;
+    BinaryOperation(String symbol) { this.symbol = symbol; }
 
-    }
-
-    public Operation getOperation() { return this.operation; }
     public String getSymbol() { return this.symbol; }
+
+    // The below code is for Android when it supports lambdas
+
+//    Add      ("+", ((x, y) -> x + y)),
+//    Subtract ("-", ((x, y) -> x - y)),
+//    Multiply ("×", ((x, y) -> x * y)),      // Must use Gradle 2.3 or higher. File >> Project Structure >> Project >> Gradle Version >> 2.3
+//    Divide   ("÷", ((x, y) -> x / y));
+//
+//    private final String symbol;
+//    private final IOperationStrategy strategy;
+////
+//     BinaryOperation(String symbol, IOperationStrategy strategy) {
+//
+//         this.symbol = symbol;
+//         this.strategy = strategy;  // This can be removed
+//
+//    }
+//
+//    public String getSymbol() { return this.symbol; }
+//    public double executeUsing(double a, double b) { return this.strategy.execute(a, b); }
 
 }
