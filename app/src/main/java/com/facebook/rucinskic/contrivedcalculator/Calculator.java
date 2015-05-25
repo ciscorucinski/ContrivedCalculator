@@ -1,5 +1,6 @@
 package com.facebook.rucinskic.contrivedcalculator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -58,11 +59,16 @@ public class Calculator extends AppCompatActivity implements ICalculatorInteract
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            case R.id.ui_simple :
+                startActivity(new Intent(this, Calculator.class));
+                break;
+
+            case R.id.ui_doge :
+                startActivity(new Intent(this, CalculatorDoge.class));
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -76,7 +82,18 @@ public class Calculator extends AppCompatActivity implements ICalculatorInteract
     public String getSecondNumber() { return valueOf(this.txtNumber2); }
 
     @Override
-    public void updateResult(String result) { this.txtResult.setText(result); }
+    public void updateResult(Expression result) {
+
+        String expression = String.format(
+                "%s %s %s = %s",
+                result.getFirstNumber(),
+                result.getOperator(),
+                result.getSecondNumber(),
+                result.getTotal());
+
+        this.txtResult.setText(expression);
+
+    }
 
     private String valueOf(EditText textbox) {
 

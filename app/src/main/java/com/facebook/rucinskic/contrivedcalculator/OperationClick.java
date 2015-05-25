@@ -15,7 +15,7 @@ public class OperationClick {
         return listener = new View.OnClickListener() {
 
             double  num1, num2, total;
-            String result, sign;
+            String sign;
 
             @Override
             public void onClick(View v) {
@@ -25,9 +25,14 @@ public class OperationClick {
                 total = operation.execute(num1, num2);
                 sign = operation.getSymbol();
 
-                result = String.format("%s %s %s = %s", num1, sign, num2, total);
+                Expression expression = new Expression.Builder()
+                        .setFirstNumber(num1)
+                        .setOperator(sign)
+                        .setSecondNumber(num2)
+                        .setTotal(total)
+                        .toExpression();
 
-                UI.updateResult(result);
+                UI.updateResult(expression);
 
             }
 

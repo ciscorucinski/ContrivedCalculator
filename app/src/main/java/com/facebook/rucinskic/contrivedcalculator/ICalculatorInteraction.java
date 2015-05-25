@@ -5,6 +5,6 @@ public interface ICalculatorInteraction {
     String getFirstNumber();
     String getSecondNumber();
 
-    void updateResult(String result);
+    void updateResult(Expression result);
 
 }
