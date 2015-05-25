@@ -1,15 +1,15 @@
 package com.facebook.rucinskic.contrivedcalculator;
 
-public enum BinaryOperation {
+public enum BinaryOperation implements IOperationStrategy {
 
-    Add      ("+") { @Override double execute(final double a, final double b) { return a + b; } },
-    Subtract ("-") { @Override double execute(final double a, final double b) { return a - b; } },
-    Multiply ("×") { @Override double execute(final double a, final double b) { return a * b; } },
-    Divide   ("÷") { @Override double execute(final double a, final double b) { return a / b; } };
+    Add      ("+") { @Override public double execute(final double a, final double b) { return a + b; } },
+    Subtract ("-") { @Override public double execute(final double a, final double b) { return a - b; } },
+    Multiply ("×") { @Override public double execute(final double a, final double b) { return a * b; } },
+    Divide   ("÷") { @Override public double execute(final double a, final double b) { return a / b; } };
 
     private final String symbol;
 
-    abstract double execute(double a, double b);
+    // abstract double execute(double a, double b);  // Could use this instead of an Interface
 
     BinaryOperation(String symbol) { this.symbol = symbol; }
 
@@ -33,6 +33,6 @@ public enum BinaryOperation {
 //    }
 //
 //    public String getSymbol() { return this.symbol; }
-//    public double executeUsing(double a, double b) { return this.strategy.execute(a, b); }
+//    public double execute(double a, double b) { return this.strategy.execute(a, b); }
 
 }
