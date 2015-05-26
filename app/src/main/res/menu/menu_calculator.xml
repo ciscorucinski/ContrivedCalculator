@@ -18,6 +18,12 @@
             app:showAsAction="ifRoom|withText"
             android:title="Doge"
             android:checkable="true"/>
+        <item
+            android:id="@+id/ui_static"
+            android:orderInCategory="100"
+            app:showAsAction="ifRoom|withText"
+            android:title="Static"
+            android:checkable="true"/>
     </group>
 
 </menu>
