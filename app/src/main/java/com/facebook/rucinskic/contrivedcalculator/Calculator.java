@@ -34,10 +34,10 @@ public class Calculator extends BaseCalculatorActivity {
 
         String expression = String.format(
                 "%s %s %s = %s",
-                result.getFirstNumber(),
+                new Number(result.getFirstNumber()),
                 result.getOperator(),
-                result.getSecondNumber(),
-                result.getTotal());
+                new Number(result.getSecondNumber()),
+                new Number(result.getTotal()));
 
         this.txtResult.setText(expression);
 
