@@ -69,6 +69,10 @@ public abstract class BaseCalculatorActivity extends AppCompatActivity implement
                 startActivity(new Intent(this, CalculatorDoge.class));
                 break;
 
+            case R.id.ui_static :
+                startActivity(new Intent(this, CalculatorStatic.class));
+                break;
+
         }
 
         return super.onOptionsItemSelected(item);
