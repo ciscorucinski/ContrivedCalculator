@@ -32,12 +32,14 @@ public class Calculator extends BaseCalculatorActivity {
     @Override
     public void updateResult(Expression result) {
 
+        Number.setDefaultMaximumDecimalPlaces(2);
+
         String expression = String.format(
                 "%s %s %s = %s",
                 new Number(result.getFirstNumber()),
                 result.getOperator(),
                 new Number(result.getSecondNumber()),
-                new Number(result.getTotal()));
+                new Number(result.getTotal()).setDecimalPlace(4));
 
         this.txtResult.setText(expression);
 

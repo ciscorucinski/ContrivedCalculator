@@ -39,12 +39,14 @@ public class CalculatorStatic extends BaseCalculatorActivity {
     @Override
     public void updateResult(Expression result) {
 
+        Number.setDefaultMaximumDecimalPlaces(6);
+
         String expression = String.format(
                 "%s %s %s = %s",
                 new Number(result.getFirstNumber()),
                 result.getOperator(),
                 new Number(result.getSecondNumber()),
-                new Number(result.getTotal()));
+                new Number(result.getTotal()).setDecimalPlace(10));
 
         txtResult.setText(expression);
 

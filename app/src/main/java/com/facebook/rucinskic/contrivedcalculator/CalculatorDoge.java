@@ -31,7 +31,7 @@ public class CalculatorDoge extends BaseCalculatorActivity {
 
         String expression = String.format(
                 "Wow! Such Calculation! %s",
-                new Number(result.getTotal()));
+                new Number(result.getTotal()).setDecimalPlace(2));
 
         this.txtResult.setText(expression);
 
