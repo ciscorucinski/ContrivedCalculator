@@ -4,26 +4,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Calculator">
     <group
-        android:checkableBehavior="single"
+        android:checkableBehavior="none"
         android:visible="true">
         <item
             android:id="@+id/ui_simple"
             android:orderInCategory="100"
             app:showAsAction="ifRoom|withText"
-            android:title="Regular"
-            android:checkable="true"/>
+            android:title="Regular"/>
         <item
             android:id="@+id/ui_doge"
             android:orderInCategory="100"
             app:showAsAction="ifRoom|withText"
-            android:title="Doge"
-            android:checkable="true"/>
+            android:title="Doge"/>
         <item
             android:id="@+id/ui_static"
             android:orderInCategory="100"
             app:showAsAction="ifRoom|withText"
-            android:title="Static"
-            android:checkable="true"/>
+            android:title="Static"/>
     </group>
+
+    <item android:title="Display Mode"
+        android:orderInCategory="101" >
+        <menu>
+            <group android:checkableBehavior="single" android:visible="true"   >
+                <item
+                    android:id="@+id/mode_sign"
+                    android:orderInCategory="100"
+                    app:showAsAction="collapseActionView"
+                    android:title="Sign Form" />
+                <item
+                    android:id="@+id/mode_noun"
+                    android:orderInCategory="100"
+                    app:showAsAction="collapseActionView"
+                    android:title="Noun Form"/>
+                <item
+                    android:id="@+id/mode_verb"
+                    android:orderInCategory="100"
+                    app:showAsAction="collapseActionView"
+                    android:title="Verb Form"/>
+            </group>
+
+        </menu>
+    </item>
 
 </menu>

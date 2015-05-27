@@ -44,7 +44,7 @@ public class CalculatorStatic extends BaseCalculatorActivity {
         String expression = String.format(
                 "%s %s %s = %s",
                 new Number(result.getFirstNumber()),
-                result.getOperator(),
+                result.getOperator(getOperationDisplayMode()),
                 new Number(result.getSecondNumber()),
                 new Number(result.getTotal()).setDecimalPlace(10));
 

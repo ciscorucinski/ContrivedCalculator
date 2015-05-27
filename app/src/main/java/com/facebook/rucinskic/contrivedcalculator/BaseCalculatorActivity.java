@@ -14,6 +14,8 @@ import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Subtrac
 
 public abstract class BaseCalculatorActivity extends AppCompatActivity implements ICalculatorInteraction {
 
+    private BinaryOperation.Display display = BinaryOperation.Display.SIGN;
+
     void initializeOperationButtons() {
 
         // Extract the buttons from XML
@@ -43,6 +45,8 @@ public abstract class BaseCalculatorActivity extends AppCompatActivity implement
         return text;
     }
 
+    BinaryOperation.Display getOperationDisplayMode() { return this.display; }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -56,26 +60,25 @@ public abstract class BaseCalculatorActivity extends AppCompatActivity implement
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         switch (item.getItemId()) {
 
-            case R.id.ui_simple :
-                startActivity(new Intent(this, Calculator.class));
-                break;
+            case R.id.ui_simple : goToActivity(Calculator.class); return true;
+            case R.id.ui_doge   : goToActivity(CalculatorDoge.class); return true;
+            case R.id.ui_static : goToActivity(CalculatorStatic.class); return true;
 
-            case R.id.ui_doge :
-                startActivity(new Intent(this, CalculatorDoge.class));
-                break;
+            case R.id.mode_sign : selectMode(item, BinaryOperation.Display.SIGN); return true;
+            case R.id.mode_verb : selectMode(item, BinaryOperation.Display.VERB); return true;
+            case R.id.mode_noun : selectMode(item, BinaryOperation.Display.NOUN); return true;
 
-            case R.id.ui_static :
-                startActivity(new Intent(this, CalculatorStatic.class));
-                break;
-
+            default : return super.onOptionsItemSelected(item);
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    private void goToActivity(Class<?> activity) { startActivity(new Intent(this, activity)); }
+    private void selectMode(MenuItem item, BinaryOperation.Display display) {
+
+        item.setChecked(true);
+        this.display = display;
 
     }
 

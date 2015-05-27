@@ -1,38 +1,51 @@
 package com.facebook.rucinskic.contrivedcalculator;
 
+import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Display.NOUN;
+import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Display.SIGN;
+import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Display.VERB;
+
 public enum BinaryOperation implements IOperationStrategy {
 
-    Add      ("+") { @Override public double execute(final double a, final double b) { return a + b; } },
-    Subtract ("-") { @Override public double execute(final double a, final double b) { return a - b; } },
-    Multiply ("×") { @Override public double execute(final double a, final double b) { return a * b; } },
-    Divide   ("÷") { @Override public double execute(final double a, final double b) { return a / b; } };
+    Add     (new OperationDisplay.Builder()
+                    .set(SIGN, "+")
+                    .set(VERB, "Add")
+                    .set(NOUN, "Addition")
+                    .build()) {
 
-    private final String symbol;
+        @Override
+        public double execute(final double a, final double b) { return a + b; } },
 
-    // abstract double execute(double a, double b);  // Could use this instead of an Interface
+    Subtract (new OperationDisplay.Builder()
+                    .set(SIGN, "-")
+                    .set(VERB, "Subtract")
+                    .set(NOUN, "Subtraction")
+                    .build()) {
 
-    BinaryOperation(String symbol) { this.symbol = symbol; }
+        @Override
+        public double execute(final double a, final double b) { return a - b; } },
 
-    public String getSymbol() { return this.symbol; }
+    Multiply (new OperationDisplay.Builder()
+                    .set(SIGN, "×")
+                    .set(VERB, "Multiply")
+                    .set(NOUN, "Multiplication")
+                    .build()) {
 
-    // The below code is for Android when it supports lambdas
+        @Override
+        public double execute(final double a, final double b) { return a * b; } },
 
-//    Add      ("+", ((x, y) -> x + y)),
-//    Subtract ("-", ((x, y) -> x - y)),
-//    Multiply ("×", ((x, y) -> x * y)),      // Must use Gradle 2.3 or higher. File >> Project Structure >> Project >> Gradle Version >> 2.3
-//    Divide   ("÷", ((x, y) -> x / y));
-//
-//    private final String symbol;
-//    private final IOperationStrategy strategy;
-////
-//     BinaryOperation(String symbol, IOperationStrategy strategy) {
-//
-//         this.symbol = symbol;
-//         this.strategy = strategy;  // This can be removed
-//
-//    }
-//
-//    public String getSymbol() { return this.symbol; }
-//    public double execute(double a, double b) { return this.strategy.execute(a, b); }
+    Divide   (new OperationDisplay.Builder()
+                    .set(SIGN, "÷")
+                    .set(VERB, "Divide")
+                    .set(NOUN, "Division").build()) {
+
+        @Override
+        public double execute(final double a, final double b) { return a / b; } };
+
+    private final OperationDisplay operation;
+
+    BinaryOperation(OperationDisplay operatation) { this.operation = operatation; }
+    public String toString(Display display) { return operation.get(display); }
+
+    public enum Display { SIGN, VERB, NOUN }
 
 }
