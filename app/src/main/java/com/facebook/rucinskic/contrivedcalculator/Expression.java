@@ -1,17 +1,15 @@
 package com.facebook.rucinskic.contrivedcalculator;
 
-import static com.facebook.rucinskic.contrivedcalculator.BinaryOperation.Display;
-
 public class Expression {
 
-    private Builder builder;
+    private final Builder builder;
 
     private Expression(Builder builder) { this.builder = builder; }
 
     public double getFirstNumber() { return builder.number1; }
     public double getSecondNumber() { return builder.number2; }
     public double getTotal () { return builder.total; }
-    public String getOperator(Display display) { return builder.operator.toString(display); }
+    public BinaryOperation getOperator() { return builder.operator; }
 
     public static class Builder {
 
@@ -23,7 +21,12 @@ public class Expression {
         public Builder setOperator(BinaryOperation sign) { operator = sign; return this; }
         public Builder setTotal (double number) { total = number; return this; }
 
-        public Expression toExpression() { return new Expression(this); }
+        public Expression toExpressionFor(ICalculatorInteraction UI) {
+
+            operator.setDisplayMode(UI.getOperationDisplayMode());
+            return new Expression(this);
+
+        }
 
     }
 

@@ -34,10 +34,11 @@ public class Calculator extends BaseCalculatorActivity {
 
         Number.setDefaultMaximumDecimalPlaces(2);
 
+        // The dictionary can be used to find these: word meanings, looking up pronunciations, correct spellings, and irregular verbs.
         String expression = String.format(
                 "%s %s %s = %s",
                 new Number(result.getFirstNumber()),
-                result.getOperator(getOperationDisplayMode()),
+                result.getOperator(),
                 new Number(result.getSecondNumber()),
                 new Number(result.getTotal()).setDecimalPlace(4));
 

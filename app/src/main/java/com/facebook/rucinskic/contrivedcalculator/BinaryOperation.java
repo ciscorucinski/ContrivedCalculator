@@ -42,9 +42,14 @@ public enum BinaryOperation implements IOperationStrategy {
         public double execute(final double a, final double b) { return a / b; } };
 
     private final OperationDisplay operation;
+    private Display display;
 
-    BinaryOperation(OperationDisplay operatation) { this.operation = operatation; }
-    public String toString(Display display) { return operation.get(display); }
+    BinaryOperation(OperationDisplay operation) { this.operation = operation; }
+
+    public  void setDisplayMode(Display mode) { this.display = mode; }
+
+    @Override
+    public String toString() { return this.operation.get(display); }
 
     public enum Display { SIGN, VERB, NOUN }
 

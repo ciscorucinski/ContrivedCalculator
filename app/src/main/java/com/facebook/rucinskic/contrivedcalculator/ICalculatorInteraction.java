@@ -7,4 +7,5 @@ public interface ICalculatorInteraction {
 
     void updateResult(Expression result);
 
+    BinaryOperation.Display getOperationDisplayMode();
 }

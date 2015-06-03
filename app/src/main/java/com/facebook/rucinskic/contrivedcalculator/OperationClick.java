@@ -4,7 +4,7 @@ import android.view.View;
 
 public class OperationClick {
 
-    private BinaryOperation operation;
+    private final BinaryOperation operation;
     private View.OnClickListener listener;
 
     public OperationClick(final BinaryOperation operation) { this.operation = operation; }
@@ -28,7 +28,7 @@ public class OperationClick {
                         .setOperator(operation)
                         .setSecondNumber(num2)
                         .setTotal(total)
-                        .toExpression();
+                        .toExpressionFor(UI);
 
                 UI.updateResult(expression);
 
